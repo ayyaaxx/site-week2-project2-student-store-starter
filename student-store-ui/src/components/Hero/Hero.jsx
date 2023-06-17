@@ -1,3 +1,5 @@
+// html useage to render the hero section of the page 
+
 import * as React from 'react'
 import "./Hero.css"
 

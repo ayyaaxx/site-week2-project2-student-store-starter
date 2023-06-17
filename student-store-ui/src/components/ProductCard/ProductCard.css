@@ -1,0 +1,19 @@
+.product-card{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 15px;
+    padding-bottom: 110px;
+    margin-top: 20px;
+    background-color: rgb(199, 174, 210);
+    border-radius: 30px;
+}
+
+.product-card img{
+    width: 400px;
+    height: auto;
+}

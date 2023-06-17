@@ -1,34 +1,29 @@
-import React from 'react'
+// the search bar component that creates the search to display on the page 
+
+import React, { useState } from "react";
 import "./Searchbar.css"
-import { useState } from 'react'
 
-const Searchbar = ({ products, setFilteredProducts }) => {
-const [searchInput, setSearchInput] = useState("");
+export default function SearchBar({ handleSearch }) {
+  // takes in the handlesearch generated in the home component and sets/handles the user input to display their wanted result 
+  const [searchQuery, setSearchQuery] = useState("");
 
-const handleChange = (e) => {
-  setSearchInput(e.target.value);
-  filterProducts(e.target.value);
-};
-
-const filterProducts = (searchTerm) => {
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  setFilteredProducts(filteredProducts);
-};
+  const handleChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    handleSearch(query);
+  };
 
   return (
-    <div>
+    <div className="search">
     <input
-        type="text"
-        placeholder="Search here"
-        onChange={handleChange}
-        value={searchInput} 
-    />
-        <p>Help</p>
-        <p>My Cart</p>
-    </div>
-  )
-}
+      type="text"
+      placeholder="Search..."
+      value={searchQuery}
+      onChange={handleChange}
+    />  
 
-export default Searchbar
+  </div>
+    
+
+  );
+}
