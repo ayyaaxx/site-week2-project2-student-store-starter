@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Hero from "../Hero/Hero";
 import ProductGrid from "../ProductGrid/ProductGrid";
-import Searchbar from "../Navbar/Searchbar";
+import Searchbar from "../Searchbar/Searchbar";
 import Footer from "../Footer/Footer";
 
-export default function Home() {
+export default function Home({handleAddItemToCart,
+  handleRemoveItemFromCart, shoppingCart, setShoppingCart}) {
   // setters and getters to create a new array for the search/categories
   //will be used to filter the products by search and categories
   const [products, setProducts] = useState([]);
@@ -58,6 +59,7 @@ export default function Home() {
   return (
     // html use to display the buttons, about us, contact us, adn calling the footer at the end 
     <div className="home">
+
       <Hero>Home Page</Hero>
       <Searchbar handleSearch={handleSearch} />
       <div className="btn-group">
@@ -78,7 +80,9 @@ export default function Home() {
         </button>
       </div>
       <h2 id="BuyNow">Latest Products</h2>
-      <ProductGrid products={filteredProducts} />
+      <ProductGrid products={filteredProducts} 
+      handleAddItemToCart={handleAddItemToCart}
+      handleRemoveItemFromCart={handleRemoveItemFromCart} setShoppingCart = {setShoppingCart} shoppingCart = {shoppingCart}/>
       <div className="about" id="About">
         <div className="content">
           <h3 id="AboutUs">About</h3>

@@ -7,7 +7,7 @@ import ProductView from '../ProductView/ProductView'
 
 
 // uses useParam for the productID to generate the product descriptions's id 
-const ProductDetail = ({ products, handleAddItemToCart, handleRemoveItemToCart }) => {
+const ProductDetail = ({products, handleAddItemToCart, handleRemoveItemFromCart }) => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +43,7 @@ const ProductDetail = ({ products, handleAddItemToCart, handleRemoveItemToCart }
       <ProductView
         products={product.product}
         handleAddItemToCart={handleAddItemToCart}
-        handleRemoveItemToCart={handleRemoveItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
       />
 
     </div>

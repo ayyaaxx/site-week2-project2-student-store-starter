@@ -3,18 +3,30 @@
 import React from "react";
 import "./ProductGrid.css";
 import ProductCard from "../ProductCard/ProductCard";
+import ShoppingCartComponent from "../ShoppingCartComponent";
 
 const ProductGrid = ({
   products,
-  handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
+  setShoppingCart ,
+  shoppingCart
 }) => {
   return (
     <div className="product-grid">
-      {products.map((products) => (
-        <ProductCard products={products} key={products.id} />
-      ))}
-    </div>
+    {products.map((product) => (
+      <ProductCard
+        key={product.id}
+        products={product}
+        // handleAddItemToCart={handleAddItemToCart} // Pass the function as a prop
+        shoppingCart = {shoppingCart}
+        setShoppingCart = {setShoppingCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
+        productId = {product.id}
+        
+      />
+    ))}
+  </div>
+  
   );
 };
 

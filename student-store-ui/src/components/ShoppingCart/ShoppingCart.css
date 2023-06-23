@@ -1,0 +1,64 @@
+Styles for ShoppingCart component
+.shopping-cart {
+    margin-bottom: 20px;
+  }
+  
+  .shopping-cart.closed {
+    display: none;
+  }
+  
+  .cart-item {
+    margin-bottom: 10px;
+  }
+  
+  .cart-product-name {
+    font-weight: bold;
+  }
+  
+  .cart-product-quantity {
+    color: #888;
+  }
+  
+  .subtotal,
+  .total-price {
+    margin-top: 10px;
+  }
+  
+  .notification {
+    color: #888;
+  } 
+
+  .shopping-cart {
+    display: none;
+  }
+  
+  .shopping-cart.open {
+    display: block;
+  }
+  
+  .cart-item {
+    margin-bottom: 10px;
+  }
+  
+  .cart-product-name {
+    font-weight: bold;
+  }
+  
+  .cart-product-quantity {
+    color: #888;
+  }
+  
+  .subtotal {
+    margin-top: 10px;
+  }
+  
+  .total-price {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .notification {
+    color: #888;
+    margin-top: 10px;
+  }
+  

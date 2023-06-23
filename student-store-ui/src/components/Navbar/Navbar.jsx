@@ -4,6 +4,8 @@ import * as React from "react"
 import "./Navbar.css"
 import Logo from "../Logo/Logo"
 
+
+
 export default function Navbar() {
   return (
     <nav className="navbar">
@@ -12,7 +14,7 @@ export default function Navbar() {
         alt="codepath logo">
         </img> 
       </div>
-      <Logo>Home Page</Logo>
+      <Logo>Home Page</Logo>       
     </nav>
   )
 }

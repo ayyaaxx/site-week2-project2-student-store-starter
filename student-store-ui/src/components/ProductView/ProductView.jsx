@@ -1,22 +1,25 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const ProductView = ({
   products,
   productId,
   quantity,
   handleAddItemToCart,
-  handleRemoveItemToCart
+  handleRemoveItemFromCart,
+  shoppingCart
 }) => {
   return (
     <div className="product-view">
       <h1 className="product-id">Product #{productId}</h1>
       <ProductCard
+        shoppingCart = {shoppingCart}
         products={products}
         productId={productId}
         quantity={quantity}
         handleAddItemToCart={handleAddItemToCart}
-        handleRemoveItemToCart={handleRemoveItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
         showDescription={true}
       />
     </div>

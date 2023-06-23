@@ -1,48 +1,55 @@
-//takes in the data from product grid to produce each individual card on the page
-
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
+import ShoppingCartComponent from "../ShoppingCartComponent";
+import handleAddItemToCart from "../handleAddItemToCart";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import QuantityComponents from "../QuantityComponents";
 
-// passes in these props 
-export default function ProductCard({
+const ProductCard = ({
   products,
-  handleAddItemToCart,
-  handleRemoveItemToCart,
   productId,
-  quantity,
+  handleRemoveItemFromCart,
   showDescription,
-}) {
-  // saves all the data into one variable 
+  shoppingCart,
+  setShoppingCart
+}) => {
+  const {Quantity, setQuantity} = QuantityComponents()
   const { id, name, price, description, image } = products;
 
   const handleAddToCart = () => {
-    handleAddItemToCart(id);
+    handleAddItemToCart(productId);
   };
 
   const handleRemoveFromCart = () => {
-    handleRemoveItemFromCart(id);
+    handleRemoveItemFromCart(productId);
   };
+  console.log(shoppingCart)
 
   return (
-    // Link is used to route to the product description 
     <div className="product-card">
       <div className="media">
         <Link to={`/products/${products.id}`}>
           <img src={products.image} alt={products.name} />
         </Link>
-        <p>{products.name}</p>
-        <p>${products.price}</p>
-        {/* only display the description, if it the product clicked on */}
-        {showDescription && <p>{products.description}</p>}
-        <button onClick={() => handleAddItemToCart(products)}>
+        <p className="product-name">{name}</p>
+        <p className="product-price">${price?.toFixed(2)}</p>
+        {showDescription && (
+          <p className="product-description">{description}</p>
+        )}
+        <button className="add" onClick={() => handleAddItemToCart(setShoppingCart, shoppingCart, products, Quantity, setQuantity)}>
           Add to Cart
         </button>
-        <button onClick={() => handleRemoveItemFromCart(products)}>
+        <button className="remove" onClick={handleRemoveFromCart}>
           Remove from Cart
         </button>
       </div>
+      {Quantity > 0 && <p className="product-quantity">Quantity: {Quantity}</p>
+}
     </div>
   );
-}
+};
+
+export default ProductCard;
+
+
