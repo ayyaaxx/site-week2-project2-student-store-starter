@@ -137,6 +137,7 @@ import Home from "../Home/Home";
 import "./App.css";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Sidebar from "../Sidebar/Sidebar";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 // import ShoppingCartComponent from "../ShoppingCartComponent";
 
 export default function App() {
@@ -144,7 +145,38 @@ export default function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  const [prevForm, setCheckoutForm] = ([])
+  const [reciept, setReceipt] = ([])
   // const [cartItem, setCartItem] = useState([]);
+
+  const handleOnCheckoutFormChange = (e) =>{
+    const {name, value } = e.target; 
+    setCheckoutForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+  }))
+  }
+
+  const handleOnSubmitCheckoutForm = (event) => {
+    event.preventDefault();
+    let subtotal = 0;
+    let cartItem = '';
+
+    shoppingCart.forEach((item) => {
+      const product = products.find((product) => product.id === item.itemId);
+      if (product){
+        subtotal += product.price * item.quantity 
+        cartItem += `${item.quantity}x ${product.name}\n`
+      }
+    })
+
+    let receiptMesssage = `Showing reciept for ${CheckoutForm.name} available at ${CheckoutForm.email}:\n\n${cartItem}\n`
+    receiptMesssage += `before taxes, subtotal was ${subtotal.toFixed(2)}`
+
+
+    setReceipt(receiptMesssage)
+    setCheckoutForm(INITIAL_FORM);
+  }
 
   const handleAddItemToCart = (item)=>{
     if(cart.includes(item)){
@@ -185,7 +217,7 @@ export default function App() {
 
       try {
         const res = await axios.get(
-          "https://codepath-store-api.herokuapp.com/store"
+          "http://localhost:3000/"
         );
         if (res?.data?.products) {
           console.log(res?.data?.products);
@@ -213,6 +245,7 @@ export default function App() {
         <main>
         <div>
             <Sidebar
+            handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
               products={products}

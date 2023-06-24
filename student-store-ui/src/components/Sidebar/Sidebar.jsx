@@ -79,7 +79,7 @@ export default function Sidebar({
   shoppingCart,
   products,
   checkoutForm,
-  // handleOnCheckoutFormChange,
+  handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
 }) {
   const handleOnToggle = () => {
@@ -88,15 +88,15 @@ export default function Sidebar({
 
 
 
-  const handleOnCheckoutFormChange = (event) => {
-    const { name, value } = event.target;
+  // const handleOnCheckoutFormChange = (event) => {
+  //   const { name, value } = event.target;
   
-    // Update the checkoutForm state with the new values
-    setCheckoutForm((prevForm) => ({
-      ...prevForm,
-      [name]: value,
-    }));
-  };
+  //   // Update the checkoutForm state with the new values
+  //   setCheckoutForm((prevForm) => ({
+  //     ...prevForm,
+  //     [name]: value,
+  //   }));
+  // };
   
 
   {
