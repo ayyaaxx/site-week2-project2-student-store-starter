@@ -1,4 +1,4 @@
-Styles for ShoppingCart component
+/* Styles for ShoppingCart component
 .shopping-cart {
     margin-bottom: 20px;
   }
@@ -60,5 +60,53 @@ Styles for ShoppingCart component
   .notification {
     color: #888;
     margin-top: 10px;
+  }
+   */
+
+   .shopping-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .shopping-cart.open {
+    display: block;
+  }
+  
+  .shopping-cart.closed {
+    display: none;
+  }
+  
+  .cart-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .cart-product-name {
+    grid-column: 1 / 2;
+    font-weight: bold;
+  }
+  
+  .cart-product-quantity {
+    grid-column: 2 / 3;
+  }
+  
+  .cart-product-price {
+    grid-column: 3 / 4;
+    text-align: right;
+  }
+  
+  .subtotal,
+  .taxes,
+  .total-price {
+    margin-bottom: 10px;
+  }
+  
+  .notification {
+    margin-bottom: 10px;
   }
   
