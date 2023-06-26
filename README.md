@@ -28,7 +28,12 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 - [ ] The shopping cart displays a table of products, quantities, subtotal, tax, and total.
 - [ ] Your choice! (Replace this bullet explaining what you implemented. Example: Users can leave ratings for products they have purchased.)
 
-## *Week 3* Application Features
+## *Week 3* Application Features Video: 
+
+<a href="https://www.loom.com/share/7285109f24ba47858f6fa10c28c52a7f">
+    <p>Loom Message - 26 June 2023 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/7285109f24ba47858f6fa10c28c52a7f-with-play.gif">
+  </a>
 
 ### Core Features
 
