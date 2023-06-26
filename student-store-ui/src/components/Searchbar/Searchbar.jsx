@@ -1,10 +1,10 @@
-// the search bar component that creates the search to display on the page 
+// the search bar component that creates the search to display on the page
 
 import React, { useState } from "react";
-import "./Searchbar.css"
+import "./Searchbar.css";
 
 export default function SearchBar({ handleSearch }) {
-  // takes in the handlesearch generated in the home component and sets/handles the user input to display their wanted result 
+  // takes in the handlesearch generated in the home component and sets/handles the user input to display their wanted result
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (event) => {
@@ -15,15 +15,12 @@ export default function SearchBar({ handleSearch }) {
 
   return (
     <div className="search">
-    <input
-      type="text"
-      placeholder="Search..."
-      value={searchQuery}
-      onChange={handleChange}
-    />  
-
-  </div>
-    
-
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={handleChange}
+      />
+    </div>
   );
 }

@@ -7,8 +7,12 @@ import ProductGrid from "../ProductGrid/ProductGrid";
 import Searchbar from "../Searchbar/Searchbar";
 import Footer from "../Footer/Footer";
 
-export default function Home({handleAddItemToCart,
-  handleRemoveItemFromCart, shoppingCart, setShoppingCart}) {
+export default function Home({
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+  cart,
+  setShoppingCart,
+}) {
   // setters and getters to create a new array for the search/categories
   //will be used to filter the products by search and categories
   const [products, setProducts] = useState([]);
@@ -41,14 +45,14 @@ export default function Home({handleAddItemToCart,
     setFilteredProducts(filtered);
   };
 
-  // handle clicks is what allows users to click on the different buttons that render those products based on their categories 
+  // handle clicks is what allows users to click on the different buttons that render those products based on their categories
   const handleClick = (event) => {
     const category = event.target.value.toLowerCase();
     if (category === "all categories") {
       //if  the user clicks all categories, only produce that button
       setFilteredProducts(products);
     } else {
-      // else, only render the specific product based on what the user click 
+      // else, only render the specific product based on what the user click
       const filtered = products.filter((product) =>
         product.category.toLowerCase().includes(category)
       );
@@ -57,9 +61,8 @@ export default function Home({handleAddItemToCart,
   };
 
   return (
-    // html use to display the buttons, about us, contact us, adn calling the footer at the end 
+    // html use to display the buttons, about us, contact us, adn calling the footer at the end
     <div className="home">
-
       <Hero>Home Page</Hero>
       <Searchbar handleSearch={handleSearch} />
       <div className="btn-group">
@@ -80,9 +83,13 @@ export default function Home({handleAddItemToCart,
         </button>
       </div>
       <h2 id="BuyNow">Latest Products</h2>
-      <ProductGrid products={filteredProducts} 
-      handleAddItemToCart={handleAddItemToCart}
-      handleRemoveItemFromCart={handleRemoveItemFromCart} setShoppingCart = {setShoppingCart} shoppingCart = {shoppingCart}/>
+      <ProductGrid
+        products={filteredProducts}
+        handleAddItemToCart={handleAddItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
+        setShoppingCart={setShoppingCart}
+        shoppingCart={cart}
+      />
       <div className="about" id="About">
         <div className="content">
           <h3 id="AboutUs">About</h3>

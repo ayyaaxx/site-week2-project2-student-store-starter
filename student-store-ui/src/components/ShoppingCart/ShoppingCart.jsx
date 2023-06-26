@@ -1,64 +1,4 @@
-// import React from 'react';
-// import "./ShoppingCart.css"
-
-// const ShoppingCart = ({ isOpen, products, shoppingCart, }) => {
-
-
-//   // console.log("shoppingcart are: ", shoppingCart)
-//   let subtotal = 0;
-//   const calculateSubtotal = () => {
-//     {shoppingCart.map((product) => {
-//       subtotal += product.price * product.quantity;
-//       console.log(product.quantity)
-//       console.log(product.price)
-//     })}
-//     return subtotal.toFixed(2);
-//     }
- 
-
-
-//   const calculateTotalPrice = () => {
-//     const subtotal = parseFloat(calculateSubtotal());
-//     console.log(`SUBTOTAL: ${subtotal}`)
-//     console.log(subtotal)
-//     const taxRate = 0.0875; 
-//     const taxes = subtotal * taxRate;
-//     const totalPrice = (subtotal + taxes);
-//     return totalPrice.toFixed(2);
-//   };
-//   console.log('HELLO HELLO HELOO', shoppingCart)
-
-//   return (
-//     <div className={`shopping-cart ${isOpen ? 'open' : 'closed'}`}>
- 
-//       {shoppingCart.length > 0 ? (
-        
-//         <div>
- 
-
-//           {shoppingCart.map((product) => {
-//             if (product) {
-//               return (
-//                 <div key={product.name} className="cart-item">
-//                   <p className="cart-product-name">{product.name}</p>
-//                   <p className="cart-product-quantity">{`Quantity: ${product.quantity}`}</p>
-//                 </div>
-//               );
-//             }
-//             return null;
-//           })}
-//           <p className="subtotal">{`Subtotal: $${calculateSubtotal()}`}</p>
-//           <p className="total-price">{`Total Price: $${calculateTotalPrice()}`}</p>
-//         </div>
-//       ) : (
-//         <p className="notification">No items added to cart yet. Start shopping now!</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ShoppingCart;
-
+// the shopping cart component which takes care of displaying pricing and the product 
 
 import React from 'react';
 import "./ShoppingCart.css";
@@ -91,15 +31,39 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
     <div className={`shopping-cart ${isOpen ? 'open' : 'closed'}`}>
       {shoppingCart?.length > 0 ? (
         <div>
-          {shoppingCart.map((item) => (
-            <div key={item.id} className="cart-item">
-              <p className="cart-product-name">{item.name}</p>
-              <p className="cart-product-quantity">{`Quantity: ${item.count}`}</p>
-            </div>
-          ))}
-          <p className="subtotal">{`Subtotal: $${calculateSubtotal()}`}</p>
-          <p className="taxes">{`Taxes: $${calculateTaxes()}`}</p>
-          <p className="total-price">{`Total Price: $${calculateTotalPrice()}`}</p>
+          <table className="cart-table">
+            <thead>
+              <tr>
+                <th className="cart-table-header">Name</th>
+                <th className="cart-table-header">Quantity</th>
+                <th className="cart-table-header">Unit Price</th>
+                <th className="cart-table-header">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shoppingCart.map((item) => (
+                <tr key={item.id} className="cart-item">
+                  <td className="cart-table-data">{item.name}</td>
+                  <td className="cart-table-data">{item.count}</td>
+                  <td className="cart-table-data">${item.price.toFixed(2)}</td>
+                  <td className="cart-table-data">${(item.price * item.count).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <table className="cart-receipts">
+            <tbody>
+              <tr>
+                <td className="subtotal">{`Subtotal: $${calculateSubtotal()}`}</td>
+              </tr>
+              <tr>
+                <td className="taxes">{`Taxes and Fees: $${calculateTaxes()}`}</td>
+              </tr>
+              <tr>
+                <td className="total-price">{`Total Price: $${calculateTotalPrice()}`}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       ) : (
         <p className="notification">No items added to cart yet. Start shopping now!</p>

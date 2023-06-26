@@ -1,23 +1,27 @@
-// product detail that is renders the product view 
+// product detail that renders the product view
+import React, { useEffect, useState } from "react";
+import { Router, useParams } from "react-router-dom";
+import axios from "axios";
+import ProductView from "../ProductView/ProductView";
 
-import React, { useEffect, useState } from 'react';
-import { Router, useParams } from 'react-router-dom';
-import axios from 'axios';
-import ProductView from '../ProductView/ProductView'
-
-
-// uses useParam for the productID to generate the product descriptions's id 
-const ProductDetail = ({products, handleAddItemToCart, handleRemoveItemFromCart }) => {
+// uses useParam for the productID to generate the product descriptions's id
+const ProductDetail = ({
+  products,
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+}) => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // to display the is loading before generating the description 
+  // to display the is loading before generating the description
 
   useEffect(() => {
-    // useEffect to fetch the data along with its id 
+    // useEffect to fetch the data along with its id
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/${productId}`);
+        const response = await axios.get(
+          `https://codepath-store-api.herokuapp.com/store/${productId}`
+        );
         setProduct(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -37,7 +41,6 @@ const ProductDetail = ({products, handleAddItemToCart, handleRemoveItemFromCart 
     return <NotFound />;
   }
 
-
   return (
     <div className="product-detail">
       <ProductView
@@ -45,9 +48,7 @@ const ProductDetail = ({products, handleAddItemToCart, handleRemoveItemFromCart 
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemFromCart={handleRemoveItemFromCart}
       />
-
     </div>
-    
   );
 };
 

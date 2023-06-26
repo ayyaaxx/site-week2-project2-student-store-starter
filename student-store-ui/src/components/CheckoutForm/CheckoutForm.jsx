@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import "./CheckoutForm.css"
-
+import React, { useState } from "react";
+import "./CheckoutForm.css";
 
 const CheckoutForm = ({
   isOpen,
   shoppingCart,
   checkoutForm,
   handleOnCheckoutFormChange,
-  handleOnSubmitCheckoutForm
+  handleOnSubmitCheckoutForm,
+  products,
+  receipt,
 }) => {
   const [checkoutFormError, setCheckoutFormError] = useState(null);
   const [checkoutFormSuccess, setCheckoutFormSuccess] = useState(false);
-  const [receipt, setReceipt] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,18 +19,20 @@ const CheckoutForm = ({
       await handleOnSubmitCheckoutForm();
       // Clear shopping cart and reset form state on successful submission
       shoppingCart.length = 0;
-      handleOnCheckoutFormChange({ email: '', name: '' });
+      handleOnCheckoutFormChange({ email: "", name: "" });
       setCheckoutFormError(null);
       setCheckoutFormSuccess(true);
     } catch (error) {
-      console.error('Error submitting checkout form:', error);
-      setCheckoutFormError('An error occurred while submitting the form. Please try again.');
+      console.error("Error submitting checkout form:", error);
+      setCheckoutFormError(
+        "An error occurred while submitting the form. Please try again."
+      );
       setCheckoutFormSuccess(false);
     }
   };
 
   return (
-    <div className={`checkout-form ${isOpen ? 'open' : 'closed'}`}>
+    <div className={`checkout-form ${isOpen ? "open" : "closed"}`}>
       <form onSubmit={handleSubmit}>
         {/* Input fields */}
         <input
@@ -54,7 +56,10 @@ const CheckoutForm = ({
         <button type="submit" className="checkout-button">
           Checkout
         </button>
-        {receipt && <div className='checkout-form-receipt'>{receipt}</div>}
+
+        
+
+        {receipt && <div className="checkout-form-receipt">{receipt}</div>}
 
         {/* Error message */}
         {checkoutFormError && <p className="error">{checkoutFormError}</p>}

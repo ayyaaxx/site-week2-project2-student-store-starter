@@ -1,3 +1,4 @@
+// Product view renders the product card component how the product card is viewed 
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
@@ -16,7 +17,6 @@ const ProductView = ({
       <ProductCard
         shoppingCart = {shoppingCart}
         products={products}
-        productId={productId}
         quantity={quantity}
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemFromCart={handleRemoveItemFromCart}
