@@ -59,7 +59,7 @@ const CheckoutForm = ({
 
         
 
-        {receipt && <div className="checkout-form-receipt">{receipt}</div>}
+        {receipt && <div className="checkout-form-receipt"> <p>{receipt}</p></div>}
 
         {/* Error message */}
         {checkoutFormError && <p className="error">{checkoutFormError}</p>}

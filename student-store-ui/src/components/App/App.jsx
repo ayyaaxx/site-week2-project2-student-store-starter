@@ -18,13 +18,13 @@ export default function App() {
   const [products, setProducts] = useState([]); // all products
   const [isFetching, setIsFetching] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState("");
 
   const [checkoutForm, setCheckoutForm] = useState({
     name: "",
     email: "",
   });
-  const [receipt, setReceipt] = useState("");
+  const [receipt, setReceipt] = useState([]);
 
   const handleOnCheckoutFormChange = (e) => {
     if (e.target) {
@@ -54,9 +54,12 @@ export default function App() {
 
     let receiptMesssage = `Showing receipt for ${checkoutForm.name} available at ${checkoutForm.email}: ${cartItem}\n`;
     receiptMesssage += `Before taxes, subtotal was ${subtotal.toFixed(2)}\n`; 
+    receiptMesssage += `\n`
+    receiptMesssage += `Taxes came out to be ${taxes.toFixed(2)}\n`
     receiptMesssage += `After taxes and fees were applied, the total comes out to ${total.toFixed(2)}`;
     setReceipt(receiptMesssage);
     setCart([]);
+   
   };
 
   const handleAddItemToCart = (item) => {

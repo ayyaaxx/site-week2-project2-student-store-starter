@@ -62,6 +62,7 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
               <tr>
                 <td className="total-price">{`Total Price: $${calculateTotalPrice()}`}</td>
               </tr>
+              
             </tbody>
           </table>
         </div>
